@@ -1,0 +1,15 @@
+roslaunch turtlebot_bringup minimal.launch # launch the system, start the kinect all that
+
+roslaunch turtlebot_navigation gmapping_demo.launch # mapping process
+
+roslaunch turtlebot_rviz_launchers view_navigation.launch # rviz for kinect 1
+
+roslaunch turtlebot_teleop keyboard_teleop.launch # launch keyboard
+rosrun map_server map_saver -f my_map # launch saving of map
+
+#Close all terminals except first one
+
+# after this is the navigation process
+roslaunch turtlebot_navigation amcl_demo.launch map_file:=/home/arms14/my_map.yaml # process to navigate and avoid new obstacle
+
+roslaunch turtlebot_rviz_launchers view_navigation.launch # view the visualisation of the map and set current location and destination etc
